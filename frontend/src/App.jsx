@@ -1,6 +1,6 @@
 import './App.css'
-import Chatbot from "./pages/Chatbot"
-import Start from "./pages/Start"
+import Chatbot from "./pages/Chatbot/Chatbot"
+import Start from "./pages/Start/Start"
 import React, { useState } from 'react'
 
 function App() {
