@@ -1,17 +1,26 @@
+import "./start.css"
+
 export default function Start({ onStart }) {
   return (
     <div
       style={{
-        background: "white",
-        width: "90vw",
-        height: "90vh",
+        background: "#7d7d7d",
+        width: "100vw",
+        height: "100vh",
+        minHeight: "100vh",
         display: "flex",
+        flexDirection:"column",
         justifyContent: "center",
-        alignItems: "center"
-      }}
+        alignItems: "center",
+        gap:"60px"
 
+      }}
       
     >
+
+      <h1 style={{fontSize:"42px", margin: 0}}>
+        NEXUS
+      </h1>
       <button
         onClick={onStart}
         style={{
@@ -21,7 +30,7 @@ export default function Start({ onStart }) {
           cursor: "pointer",
           borderRadius: "8px",
           border: "none",
-          backgroundColor: "#fa0000ff",
+          backgroundColor: "#034fc2ff",
           color: "white"
         }}
       >
