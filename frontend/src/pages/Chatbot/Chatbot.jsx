@@ -13,7 +13,7 @@ export default function Chatbot() {
 
     const botResponse = {
       sender: "bot",
-      text: "Olá! Eu sou o chatbot da biblioteca. Como posso te ajudar hoje?",
+      text: "Olá! Eu sou o IndexIa, chatbot da biblioteca. Como posso te ajudar hoje?",
     };
 
     setMessages((prev) => [...prev, userMessage, botResponse]);
@@ -23,7 +23,7 @@ export default function Chatbot() {
 
   return (
     <div style={styles.container}>
-      <h2>Nexus</h2>
+      <h2>INDEXIA</h2>
 
       <div style={styles.chatBox}>
         {messages.map((msg, index) => (
@@ -56,7 +56,8 @@ export default function Chatbot() {
           }}
         />
 
-        <button style={styles.button} onClick={sendMessage}>
+        <button 
+        style={{fontSize:"15px", margin: 0, border: "none",borderRadius: "16px", color:"#ffffffff", background: "#8c0005", cursor:"pointer" }} onClick={sendMessage}>
           Enviar
         </button>
       </div>
@@ -72,10 +73,12 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    background: "#3a3a3aff",
+    background: "#bb0000",
     padding: 0,
     margin: 0,
-    fontFamily: "Arial",
+    fontFamily: "Montserrat', sans-serif",
+    
+    
   },
 
   // aqui é onde aparece as mensagens usuário x chat
@@ -86,7 +89,9 @@ const styles = {
     flexDirection: "column",
     gap: "8px",
     padding: "20px",
-    background: "#5f1313ff",
+    background: "#ffffffff",
+    fontFamily: "Arial",
+    
   },
 
   //o estilo de cada bolha de mensagem
@@ -102,7 +107,7 @@ const styles = {
     gap: "8px",
     padding: "20px",
     borderTop: "none",
-    background: "#5f1313ff",
+    background: "#ffffff73",
   },
 
   //a caixa onde o usuário digita
@@ -110,7 +115,7 @@ const styles = {
     flex: 1,
     padding: "13px",
     borderRadius: "26px",
-    background:"#d1d1d1ff",
+    background:"#6f70706c",
     border:"none"
   },
 
@@ -119,8 +124,9 @@ const styles = {
     padding: "8px 12px",
     cursor: "pointer",
     borderRadius:"20px",
-    background:"#a8a8a8",
+    background:"#db0404fd",
     border:"none"
+    
   
   },
 };
