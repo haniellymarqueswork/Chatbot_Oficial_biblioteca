@@ -23,7 +23,9 @@ export default function Chatbot() {
 
   return (
     <div style={styles.container}>
-      <h2>INDEXIA</h2>
+      
+      <h2 style={{color:"white", textAlign:"center"}}> 
+        INDEXIA</h2>
 
       <div style={styles.chatBox}>
         {messages.map((msg, index) => (
@@ -107,7 +109,7 @@ const styles = {
     gap: "8px",
     padding: "20px",
     borderTop: "none",
-    background: "#ffffff73",
+    background: "#8f0c0cff",
   },
 
   //a caixa onde o usuário digita
@@ -115,7 +117,7 @@ const styles = {
     flex: 1,
     padding: "13px",
     borderRadius: "26px",
-    background:"#6f70706c",
+    background:"#e6e6e6ff",
     border:"none"
   },
 
@@ -124,7 +126,7 @@ const styles = {
     padding: "8px 12px",
     cursor: "pointer",
     borderRadius:"20px",
-    background:"#db0404fd",
+    background:"#8a0b0bff",
     border:"none"
     
   
