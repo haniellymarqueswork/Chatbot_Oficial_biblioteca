@@ -4,7 +4,7 @@ export default function Start({ onStart }) {
   return (
     <div
       style={{
-        background: "#7d7d7d",
+        background: "#cacacaff",
         width: "100vw",
         height: "100vh",
         minHeight: "100vh",
@@ -18,19 +18,19 @@ export default function Start({ onStart }) {
       
     >
 
-      <h1 style={{fontSize:"42px", margin: 0}}>
-        NEXUS
+      <h1 style={{fontSize:"40px", margin: 0, color:"#850107ff", fontFamily: "DejaVu Sans Mono, monospaceNew Century Schoolbook, TeX Gyre Schola, serif"}}>
+        INDEXIA 
       </h1>
       <button
         onClick={onStart}
         style={{
           fontSize: "20px",
-          padding: "10px",
-          width:"150px",
+          padding: "10px ",
+          width:"160px",
           cursor: "pointer",
           borderRadius: "8px",
           border: "none",
-          backgroundColor: "#034fc2ff",
+          backgroundColor: "#850107ff",
           color: "white"
         }}
       >
