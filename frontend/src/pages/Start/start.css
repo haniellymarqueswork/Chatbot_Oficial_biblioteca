@@ -1,0 +1,74 @@
+/* Container da tela inicial */
+.start-container {
+  background: rgb(83, 45, 170);
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+/* Logo IndexIA */
+.logo {
+  font-size: 50px;
+  margin: 0;
+  color: rgb(245, 245, 245);
+  font-family: "DejaVu Sans Mono", monospace,
+    "New Century Schoolbook", "TeX Gyre Schola", serif;
+  display: flex;
+  align-items: center;
+}
+
+/* Palavra Index */
+.index {
+  opacity: 0;
+  animation: indexAppear 1.2s ease-out forwards;
+}
+
+/* Palavra IA */
+.ia {
+  opacity: 0;
+  margin-left: 4px;
+  animation: iaSlideIn 1.2s ease-out forwards;
+  animation-delay: 0.8s;
+}
+
+/* Botão iniciar */
+.start-button {
+  
+  font-size: 20px;
+   margin-top: 24px;
+  padding: 10px;
+  width: 160px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+  background-color: rgb(255, 255, 255);
+  color: rgb(83, 45, 170);
+}
+
+/* Animações */
+@keyframes indexAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes iaSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

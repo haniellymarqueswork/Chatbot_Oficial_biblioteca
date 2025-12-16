@@ -1,0 +1,80 @@
+/* Layout geral */
+.chat-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgb(83, 45, 170);
+  font-family: Arial, sans-serif;
+}
+
+/* Título */
+.chat-title {
+  color: #f7f7f7;
+  text-align: center;
+  font-size: 36px;
+  margin: 16px 0;
+}
+
+/* Área das mensagens */
+.chat-box {
+  flex: 1;
+  height: 70vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  background: #cacaca;
+}
+
+/* Bolhas de mensagem */
+.message {
+  max-width: 70%;
+  padding: 8px 12px;
+  border-radius: 16px;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  color: white;
+}
+
+/* Mensagem do usuário */
+.message.user {
+  align-self: flex-end;
+  background: rgba(17, 7, 158, 0.596);
+}
+
+/* Mensagem do bot */
+.message.bot {
+  align-self: flex-start;
+  background: rgb(128, 20, 20);
+}
+
+/* Área do input */
+.input-area {
+  display: flex;
+  gap: 8px;
+  padding: 20px;
+  background: rgb(83, 45, 170);
+}
+
+/* Input */
+.chat-input {
+  flex: 1;
+  padding: 13px;
+  border-radius: 26px;
+  background: #f0f0f0ff;
+  border: none;
+  outline: none;
+}
+
+/* Botão */
+.send-button {
+  padding: 8px 12px;
+  border-radius: 20px;
+  background: #f0f0f0ff;
+  border: none;
+  cursor: pointer;
+}
