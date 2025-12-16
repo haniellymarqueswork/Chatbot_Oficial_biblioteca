@@ -23,7 +23,7 @@ export async function chatController(req, res) {
     // 2️⃣ Caso não encontre intenção
     return res.json({
       reply:
-        "🤖 Posso te ajudar apenas com assuntos relacionados à biblioteca e livros. Se quiser, pergunte sobre horário, empréstimos ou localização.",
+        "Desculpe, posso te ajudar apenas com assuntos relacionados à biblioteca e livros. Se quiser, pergunte sobre horário, empréstimos, localização ou renovação. Terei prazer em tirar suas dúvidas.",
     });
 
   } catch (error) {
