@@ -10,12 +10,26 @@ export const intents = [
     reply: "Para pegar um livro emprestado, é necessário estar devidamente matriculado e ter cadastro na biblioteca. O empréstimo acontece apenas de forma presencial."
   },
   {
+    intent: "tempo de emprestimo",
+    keywords: ["limite", "tempo", "prazo"],
+    reply: "O tempo de empréstimo funciona da seguinte forma: \n" +
+    " - Para alunos da graduação o prazo é de 10 dias úteis\n" +
+    " - Para alunos da Pós-Graduação o prazo é de 15 dias úteis \n"+
+    " - Para professores, o prazo é de 30 dias \n" 
+  },
+
+  {
+    intent: "atraso",
+    keywords:["multa", "atraso", "atrasei", "valor"],
+    reply: "Em caso de atraso na devolução, o usuário pagará uma multa no valor de R$ 2,00 reais por dia e por livro. Lembrando que a multa só para na devolução dos exemplares. "
+
+  },
+
+  {
     intent: "devolucao",
-    keywords: ["devolver", "devolucao", "prazo", "atraso"],
-    reply: "A devolução funciona da seguinte forma: \n" +
-    "Para alunos da graduação o prazo é de 10 dias úteis\n" +
-    "Para alunos da Pós-Graduação o prazo é de 15 dias úteis \n"+
-    "Para professores, o prazo é de 30 dias \n" 
+    keywords: ["devolução", "devolver", "entregar"],
+    reply: "O livro precisa ser devolvido de forma presencial, mas caso o usuário não consiga devolver pessoalmente, outra pessoa pode devolver em seu lugar."
+
   },
 
   {
