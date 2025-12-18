@@ -9,7 +9,7 @@ export default function Start({ onStart }) {
       </h1>
 
       <button className="start-button" onClick={onStart}>
-        Iniciar
+        INICIAR
       </button>
     </div>
   );

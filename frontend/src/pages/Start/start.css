@@ -1,6 +1,6 @@
 /* Container da tela inicial */
 .start-container {
-  background: rgb(83, 45, 170);
+  background: rgb(0, 0, 0);
   width: 100vw;
   height: 100vh;
   min-height: 100vh;
@@ -39,16 +39,19 @@
 /* Botão iniciar */
 .start-button {
   
-  font-size: 20px;
+  font-size: 15px;
    margin-top: 24px;
   padding: 10px;
   width: 160px;
   cursor: pointer;
   border-radius: 8px;
   border: none;
-  background-color: rgb(255, 255, 255);
-  color: rgb(83, 45, 170);
+  background-color: rgb(235, 147, 15);
+  color: rgb(0, 0, 0);
 }
+
+
+
 
 /* Animações */
 @keyframes indexAppear {
@@ -71,4 +74,6 @@
     opacity: 1;
     transform: translateX(0);
   }
+
+  
 }
