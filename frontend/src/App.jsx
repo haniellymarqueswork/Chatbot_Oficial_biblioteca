@@ -1,21 +1,17 @@
-import './App.css'
-import Chatbot from "./pages/Chatbot/Chatbot"
-import Start from "./pages/Start/Start"
-import React, { useState } from 'react'
+import { useState } from "react";
+import Start from "./pages/Start/Start";
+import Chatbot from "./pages/Chatbot/Chatbot";
 
-function App() {
-
-  const [start, setStart] = useState(false)
+export default function App() {
+  const [showChatbot, setShowChatbot] = useState(false);
 
   return (
-    <div>
-      {start ? (
+    <>
+      {showChatbot ? (
         <Chatbot />
       ) : (
-        <Start onStart={() => setStart(true)} />
+        <Start onStart={() => setShowChatbot(true)} />
       )}
-    </div>
-  )
+    </>
+  );
 }
-
-export default App

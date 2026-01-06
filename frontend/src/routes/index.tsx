@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Chatbot from "../pages/Chatbot";
-import Start from "../pages/Start";
+import Chatbot from "../pages/Chatbot/Chatbot";
+import Start from "../pages/Start/Start";
 
 export default function AppRoutes(){
     return(

@@ -1,16 +1,22 @@
+import ParticlesBackground from "../../components/ParticlesBackground";
+import Button from "../../components/button";
 import "./start.css";
 
+
 export default function Start({ onStart }) {
+  
   return (
     <div className="start-container">
-      <h1 className="logo">
+      <ParticlesBackground />
+
+      <h1 className="titulo">
         <span className="index">Index</span>
         <span className="ia">IA</span>
       </h1>
 
-      <button className="start-button" onClick={onStart}>
-        INICIAR
-      </button>
+      <Button onClick={onStart}>
+        
+      </Button>
     </div>
   );
 }
