@@ -36,14 +36,14 @@ export default function Chatbot() {
     } catch {
       setMessages(prev => [
         ...prev,
-        { sender: "bot", text: "❌ Não consegui me conectar ao servidor." },
+        { sender: "bot", text: "❌ Erro ao tentar conectar ao servidor." },
       ]);
     }
   }
 
   return (
     <div className="chat-container">
-      <h2 className="chat-title">Nexus</h2>
+      <h2 className="chat-title">IndexIA</h2>
 
       <div className="chat-box">
         {messages.map((msg, index) => (
@@ -52,6 +52,7 @@ export default function Chatbot() {
           </div>
         ))}
 
+        
         {/* Âncora do auto-scroll */}
         <div ref={messagesEndRef} />
       </div>

@@ -44,7 +44,7 @@ const App = ({ onClick, children }) => {
           icon={<PlayCircleOutlined />}
           onClick={onClick} 
           style={{
-            width: "230px",
+            width: "170px",
             alignItems: "center",
             color: "#000000ff",
             border: "16px"
