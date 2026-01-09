@@ -1,5 +1,11 @@
 import { intents } from "../data/intents.js";
 import { normalizeText } from "../utils/textUtils.js";
+import OpenAI from "openai";
+
+// instancia uma vez (boa prática)
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
 export async function chatController(req, res) {
   try {
@@ -13,17 +19,34 @@ export async function chatController(req, res) {
 
     const text = normalizeText(message);
 
-    // 1️⃣ Verifica respostas fixas (biblioteca)
+    // 1️⃣ Verifica intents fixas
     for (const intent of intents) {
       if (intent.keywords.some(keyword => text.includes(keyword))) {
         return res.json({ reply: intent.reply });
       }
     }
 
-    // 2️⃣ Caso não encontre intenção
+    // 2️⃣ Se não achou intent → usa IA
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [
+        {
+          role: "system",
+          content: `
+Você é um assistente virtual de uma biblioteca.
+Você pode indicar livros por área do conhecimento como tecnologia, programação, Java, banco de dados, saúde e educação.
+Se a pergunta não tiver relação com livros, leitura ou biblioteca, responda educadamente que não pode ajudar.
+          `,
+        },
+        {
+          role: "user",
+          content: message,
+        },
+      ],
+    });
+
     return res.json({
-      reply:
-        "Desculpe, posso te ajudar apenas com assuntos relacionados à biblioteca e livros. Se quiser, pergunte sobre horário, empréstimos, localização ou renovação. Terei prazer em tirar suas dúvidas.",
+      reply: completion.choices[0].message.content,
     });
 
   } catch (error) {
