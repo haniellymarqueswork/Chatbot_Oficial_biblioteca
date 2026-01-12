@@ -3,16 +3,17 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: hsl(222, 47%, 11%);
+  background: hsl(0, 0%, 100%);
   font-family: "Inter", Arial, sans-serif;
   align-items: center;
 }
 
 
 .chat-title {
-  color: #f7f7f7;
-  font-size: 22px;
+  color: #d30f0f;
+  font-size: 25px;
   margin: 20px 0;
+  position: relative;
 }
 
 
@@ -25,8 +26,12 @@
   flex-direction: column;
   gap: 10px;
   padding: 20px;
-  background: #f8f9fb;
-  border-radius: 16px;
+  background: #ffffffbd;
+  border-radius: 10px;
+  border-style:solid;
+  border-color: #919191;
+  border-width:2px;
+ 
 }
 
 
@@ -40,15 +45,17 @@
 
 .message.user {
   align-self: flex-end;
-  background: #1e40af;
+  background: #0738da;
   color: white;
+  font-size: 15px;
 }
 
 
 .message.bot {
   align-self: flex-start;
-  background: #e5e7eb;
-  color: #111827;
+  background: #817f7f;
+  color: #ffffff;
+  font-size: 15px;
 }
 
 
@@ -65,18 +72,20 @@
   flex: 1;
   padding: 14px 18px;
   border-radius: 999px;
-  border: none;
+  border-style: solid;
   outline: none;
   font-size: 14px;
+  background-color: #fcfcfc;
+  
 }
 
 
 .send-button {
   padding: 0 20px;
   border-radius: 999px;
-  background: #1e40af;
-  color: white;
-  border: none;
+  background: #c70f0f;
+  color: rgb(255, 255, 255);
+  border:none;
   cursor: pointer;
 }
 

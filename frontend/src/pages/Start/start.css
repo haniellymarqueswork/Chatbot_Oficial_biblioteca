@@ -1,6 +1,9 @@
 /* Container da tela inicial */
 .start-container {
-  background: #0F172A;
+  background: linear-gradient(
+    135deg,
+   #F5F5F5
+  );
   width: 100vw;
   height: 100vh;
   min-height: 100vh;
@@ -9,15 +12,15 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  
 }
+
 
 
 /* Logo IndexIA */
 .titulo {
   font-size: 80px;
   margin: 0;
-  color: rgb(250, 250, 250);
+  color: #E31E24;
   font-family:Arial, Helvetica, sans-serif;
   display: flex;
   align-items: top;
@@ -41,7 +44,7 @@
   margin-left: 4px;
   animation: iaSlideIn 1.2s ease-out forwards;
   animation-delay: 0.8s;
-  color:#5BC0BE;
+  color:#4D4D4D;
 }
 
 

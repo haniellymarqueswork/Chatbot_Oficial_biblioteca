@@ -4,28 +4,25 @@ import { Button, ConfigProvider, Space } from 'antd';
 import { createStyles } from 'antd-style';
 
 const useStyle = createStyles(({ prefixCls, css }) => ({
-  linearGradientButton: css`
-    &.${prefixCls}-btn-primary:not([disabled]):not(.${prefixCls}-btn-dangerous) {
-      > span {
-        position: relative;
-      }
+  customButton: css`
+    &.${prefixCls}-btn-primary {
+      background-color: #E31E24 !important;
+      color: #ffffff !important;
+      border: none !important;
+      transition: all 0.3s ease;
+    }
 
-      &::before {
-        content: '';
-        background: linear-gradient(135deg, #1059b9ff, #29f5f1ff);
-        position: absolute;
-        inset: -1px;
-        opacity: 1;
-        transition: all 0.3s;
-        border-radius: inherit;
-      }
+    &.${prefixCls}-btn-primary:hover {
+      background-color: #858585 !important;
+      color: #ff0000 !important;
+    }
 
-      &:hover::before {
-        opacity: 0;
-      }
+    &.${prefixCls}-btn-primary:hover .anticon {
+      color: #ffffff !important;
     }
   `,
 }));
+
 
 
 const App = ({ onClick, children }) => {
@@ -33,27 +30,21 @@ const App = ({ onClick, children }) => {
 
   return (
     <ConfigProvider
-      button={{
-        className: styles.linearGradientButton,
-      }}
-    >
-      <Space>
-        <Button
-          type="primary"
-          size="large"
-          icon={<PlayCircleOutlined />}
-          onClick={onClick} 
-          style={{
-            width: "170px",
-            alignItems: "center",
-            color: "#000000ff",
-            border: "16px"
-          }}
-        >
-          {children || "INICIAR"}
-        </Button>
-      </Space>
-    </ConfigProvider>
+  button={{
+    className: styles.customButton,
+  }}
+>
+  <Button
+    type="primary"
+    size="large"
+    icon={<PlayCircleOutlined />}
+    onClick={onClick}
+    style={{ width: "170px" }}
+  >
+    INICIAR
+  </Button>
+</ConfigProvider>
+
   );
 };
 
