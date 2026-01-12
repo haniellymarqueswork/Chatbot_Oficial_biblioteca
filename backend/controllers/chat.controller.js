@@ -1,11 +1,6 @@
 import { intents } from "../data/intents.js";
 import { normalizeText } from "../utils/textUtils.js";
-import OpenAI from "openai";
-
-// instancia uma vez (boa prática)
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+import { gerarResposta } from "../services/openai.service.js";
 
 export async function chatController(req, res) {
   try {
@@ -19,35 +14,37 @@ export async function chatController(req, res) {
 
     const text = normalizeText(message);
 
-    // 1️⃣ Verifica intents fixas
+    // 1️⃣ Intents diretos (sem IA)
     for (const intent of intents) {
       if (intent.keywords.some(keyword => text.includes(keyword))) {
         return res.json({ reply: intent.reply });
       }
     }
 
-    // 2️⃣ Se não achou intent → usa IA
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [
-        {
-          role: "system",
-          content: `
-Você é um assistente virtual de uma biblioteca.
-Você pode indicar livros por área do conhecimento como tecnologia, programação, Java, banco de dados, saúde e educação.
-Se a pergunta não tiver relação com livros, leitura ou biblioteca, responda educadamente que não pode ajudar.
-          `,
-        },
-        {
-          role: "user",
-          content: message,
-        },
-      ],
-    });
+    // 2️⃣ System base (STRING)
+    const systemBase = {
+      role: "system",
+      content: `
+Você é um assistente virtual de uma biblioteca universitária.
+Ajude apenas com assuntos relacionados a livros, leitura, estudo, biblioteca, autores e faça resumo quando solicitado.
+Indique livros por área do conhecimento quando solicitado.
+Se a pergunta não for relacionada à biblioteca, responda educadamente que não pode ajudar.
+Se não souber a resposta, diga que não sabe.
+      `,
+    };
 
-    return res.json({
-      reply: completion.choices[0].message.content,
-    });
+    const messages = [
+      systemBase,
+      {
+        role: "user",
+        content: message,
+      },
+    ];
+
+    // 3️⃣ IA
+    const resposta = await gerarResposta(messages);
+
+    return res.json({ reply: resposta });
 
   } catch (error) {
     console.error("Erro no chatController:", error);
