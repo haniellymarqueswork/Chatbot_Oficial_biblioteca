@@ -6,15 +6,15 @@ import { createStyles } from 'antd-style';
 const useStyle = createStyles(({ prefixCls, css }) => ({
   customButton: css`
     &.${prefixCls}-btn-primary {
-      background-color: #E31E24 !important;
-      color: #ffffff !important;
+      background-color: #f3f3f3 !important;
+      color: #033646 !important;
       border: none !important;
       transition: all 0.3s ease;
     }
 
     &.${prefixCls}-btn-primary:hover {
-      background-color: #858585 !important;
-      color: #ff0000 !important;
+      background-color: #124ceb !important;
+      color: #ffffff !important;
     }
 
     &.${prefixCls}-btn-primary:hover .anticon {

@@ -53,7 +53,6 @@ export default function Chatbot() {
         ))}
 
         
-        {/* Âncora do auto-scroll */}
         <div ref={messagesEndRef} />
       </div>
 

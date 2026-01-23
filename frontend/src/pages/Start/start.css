@@ -1,8 +1,7 @@
-/* Container da tela inicial */
 .start-container {
   background: linear-gradient(
     135deg,
-   #F5F5F5
+   #047780
   );
   width: 100vw;
   height: 100vh;
@@ -10,45 +9,38 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 32px;
   align-items: center;
   position: relative;
 }
 
 
 
-/* Logo IndexIA */
 .titulo {
-  font-size: 80px;
-  margin: 0;
-  color: #E31E24;
-  font-family:Arial, Helvetica, sans-serif;
-  display: flex;
-  align-items: top;
-  position:absolute;
-  top: 50px;
-  left: 580;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(48px, 8vw, 80px);
   font-weight: bold;
-  
+  color: #f7f7f7;
+  margin: 0;
+
 
 }
 
-/* Palavra Index */
+
 .index {
   opacity: 0;
   animation: indexAppear 1.2s ease-out forwards;
 }
 
-/* Palavra IA */
 .ia {
   opacity: 0;
   margin-left: 4px;
   animation: iaSlideIn 1.2s ease-out forwards;
   animation-delay: 0.8s;
-  color:#4D4D4D;
+  color:#f7f7f7;
 }
 
 
-/* Animações */
 @keyframes indexAppear {
   from {
     opacity: 0;
