@@ -2,30 +2,47 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #96b4ff;
+  background-color: aliceblue;
   font-family: "Inter", Arial, sans-serif;
+   overflow: hidden;
 }
 
-/* TÍTULO */
 .chat-title {
   text-align: center;
-  padding: 12px 0;
-  color: #d30f0f;
-  font-size: 24px;
+  padding: 14px 0;
+  color: #0127ff;
+  font-size: 26px;
+  font-weight: bold;
   flex-shrink: 0;
 }
 
-/* ÁREA DO CHAT */
+.chat-layout {
+  flex: 1;
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  overflow: hidden;
+}
+
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  overflow: hidden;
+}
+
 .chat-box {
   flex: 1;
   overflow-y: auto;
   padding: 20px;
-  background: #ffffff;
+  background: #1f1f1f;
   display: flex;
   flex-direction: column;
 }
 
-/* WRAPPER DAS MENSAGENS */
 .chat-box .message {
   max-width: 70%;
   padding: 12px 16px;
@@ -33,51 +50,62 @@
   font-size: 15px;
   margin-bottom: 10px;
   word-wrap: break-word;
+  animation: messageIn 0.25s ease-out;
 }
 
-/* USUÁRIO */
 .chat-box .message.user {
   align-self: flex-end;
   background: #0738da;
   color: white;
+  border-bottom-right-radius: 6px;
 }
 
-/* BOT */
 .chat-box .message.bot {
   align-self: flex-start;
-  background: #817f7f;
+  background: #7a7a7a;
   color: white;
+  border-bottom-left-radius: 6px;
 }
 
-/* INPUT FIXO NO FUNDO */
 .input-area {
   display: flex;
   gap: 10px;
-  padding: 12px;
-  background: #0c0c0c;
-  flex-shrink: 0;
+  padding: 14px;
+  background: #aaaaaa;
 }
 
-/* INPUT */
 .chat-input {
   flex: 1;
   padding: 14px 18px;
   border-radius: 999px;
-  border: 1px solid #ccc;
+  border: none;
   font-size: 14px;
+  outline: none;
 }
 
-/* BOTÃO */
+.chat-input:focus {
+  box-shadow: 0 0 0 2px #0591a3;
+}
+
 .send-button {
-  padding: 0 22px;
+  padding: 0 24px;
   border-radius: 999px;
-  background: #c70f0f;
+  background: #1670f7;
   color: white;
   border: none;
   cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s ease, transform 0.1s ease;
 }
 
-/* ANIMAÇÃO SUAVE */
+.send-button:hover {
+  background: #a80d0d;
+}
+
+.send-button:active {
+  transform: scale(0.96);
+}
+
 @keyframes messageIn {
   from {
     opacity: 0;

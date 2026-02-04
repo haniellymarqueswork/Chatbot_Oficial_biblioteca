@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import Suggestions from "../../components/suggestions/Suggestions";
 import "./chatbot.css";
 
 export default function Chatbot() {
@@ -11,48 +12,54 @@ export default function Chatbot() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  async function sendMessage() {
-    if (!input.trim()) return;
+  async function sendMessage(text) {
+  const messageText = text ?? input;
 
-    const userText = input;
+  if (!messageText.trim()) return;
 
-    setMessages(prev => [...prev, { sender: "user", text: userText }]);
-    setInput("");
+  setMessages(prev => [...prev, { sender: "user", text: messageText }]);
+  setInput("");
 
-    try {
-      const response = await fetch("http://localhost:3000/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: userText }),
-      });
+  try {
+    const response = await fetch("http://localhost:3000/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: messageText }),
+    });
 
-      const data = await response.json();
+    const data = await response.json();
 
-      setMessages(prev => [
-        ...prev,
-        { sender: "bot", text: data.reply },
-      ]);
+    setMessages(prev => [
+      ...prev,
+      { sender: "bot", text: data.reply },
+    ]);
 
-    } catch {
-      setMessages(prev => [
-        ...prev,
-        { sender: "bot", text: "❌ Erro ao tentar conectar ao servidor." },
-      ]);
-    }
+  } catch {
+    setMessages(prev => [
+      ...prev,
+      { sender: "bot", text: "❌ Erro ao tentar conectar ao servidor." },
+    ]);
   }
+}
+
 
   return (
     <div className="chat-container">
-      <h2 className="chat-title">IndexIA</h2>
+  <h2 className="chat-title">IndexIA</h2>
 
+  <div className="chat-layout">
+    
+    <Suggestions
+      onSelect={(question) => sendMessage(question)}
+    />
+
+    <div className="chat-main">
       <div className="chat-box">
         {messages.map((msg, index) => (
           <div key={index} className={`message ${msg.sender}`}>
             {msg.text}
           </div>
         ))}
-
-        
         <div ref={messagesEndRef} />
       </div>
 
@@ -65,10 +72,13 @@ export default function Chatbot() {
           onKeyDown={(e) => e.key === "Enter" && sendMessage()}
         />
 
-        <button className="send-button" onClick={sendMessage}>
+        <button className="send-button" onClick={() => sendMessage()}>
           Enviar
         </button>
       </div>
     </div>
+
+  </div>
+</div>
   );
 }
