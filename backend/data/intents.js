@@ -32,11 +32,23 @@ export const intents = [
 
   },
 
-  {
-    intent: "renovacao",
-    keywords: ["renovar", "renovacao", "prorrogar"],
-    reply: "Seja o usuário professor ou aluno (Graduação ou Pós-Graduação) a quantidade de renovação é a mesma. Tendo disponíveis 3 renovações por empréstimo."
-  },
+  
+ {
+  intent: "renovacao",
+  keywords: ["renovar", "renovacao", "prorrogar"],
+  reply: `
+Seja o usuário professor ou aluno (Graduação ou Pós-Graduação) a quantidade de renovações é a mesma.
+Tendo disponíveis 3 renovações por empréstimo.
+
+Para renovar, basta ir na área do usuário e digitar a matrícula e senha da biblioteca.
+
+Para renovar, acesse a biblioteca:
+<a href="https://biblioteca.iesp.edu.br/instituicao/detalhe/1/true" target="_blank" rel="noopener noreferrer">
+Clique aqui
+</a>
+`
+},
+
 
   {
     intent: "localizacao",
