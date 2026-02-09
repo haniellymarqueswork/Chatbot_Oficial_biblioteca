@@ -45,7 +45,7 @@ export default function Chatbot() {
 
   return (
     <div className="chat-container">
-  <h2 className="chat-title">IndexIA</h2>
+  <h2 className="chat-title">INDEXIA</h2>
 
   <div className="chat-layout">
     

@@ -1,7 +1,7 @@
 .suggestions {
   width: 260px;
-  background: #1f1f1f;
-  color: white;
+  background: #047780;
+  color: rgb(255, 255, 255);
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -16,8 +16,8 @@
 }
 
 .suggestion-btn {
-  background: #2c2c2c;
-  color: white;
+  background: #e2e2e2;
+  color: rgb(0, 0, 0);
   border: none;
   padding: 10px;
   border-radius: 8px;
@@ -28,7 +28,8 @@
 }
 
 .suggestion-btn:hover {
-  background: #3a3a3a;
+  background: #8d8d8d;
+  color: #ffffff;
 }
 .chat-main {
   flex: 1;
