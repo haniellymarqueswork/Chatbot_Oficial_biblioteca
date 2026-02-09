@@ -1,7 +1,7 @@
 .suggestions {
   width: 260px;
-  background: #047780;
-  color: rgb(255, 255, 255);
+  background: #ffffff;
+  color: rgb(145, 2, 2);
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -16,8 +16,8 @@
 }
 
 .suggestion-btn {
-  background: #e2e2e2;
-  color: rgb(0, 0, 0);
+  background: #940505;
+  color: rgb(255, 255, 255);
   border: none;
   padding: 10px;
   border-radius: 8px;
