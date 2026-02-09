@@ -42,5 +42,11 @@ export const intents = [
     intent: "localizacao",
     keywords: ["onde fica", "endereco", "localizacao"],
     reply: "Rodovia BR 230, Km 14, s/n, Morada Nova. Cabedelo - PB. CEP 58109-303"
+  },
+
+  {
+    intent: "IndexIA",
+    keywords: ["finalidade", "o que pode fazer", "IndexIA"],
+    reply: " O IndexIA é um assistente inteligente que entende o que você precisa. Ele localiza informações, interpreta dados e entrega respostas claras, otimizando tempo e reduzindo esforços."
   }
 ];

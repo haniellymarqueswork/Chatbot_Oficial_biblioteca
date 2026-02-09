@@ -14,14 +14,12 @@ export async function chatController(req, res) {
 
     const text = normalizeText(message);
 
-    // 1️⃣ Intents diretos (sem IA)
     for (const intent of intents) {
       if (intent.keywords.some(keyword => text.includes(keyword))) {
         return res.json({ reply: intent.reply });
       }
     }
 
-    // 2️⃣ System base (STRING)
     const systemBase = {
       role: "system",
       content: `
@@ -41,7 +39,6 @@ Se não souber a resposta, diga que não sabe.
       },
     ];
 
-    // 3️⃣ IA
     const resposta = await gerarResposta(messages);
 
     return res.json({ reply: resposta });
@@ -49,7 +46,7 @@ Se não souber a resposta, diga que não sabe.
   } catch (error) {
     console.error("Erro no chatController:", error);
     return res.status(500).json({
-      reply: "Ocorreu um erro interno. Tente novamente mais tarde.",
+      reply: "Desculpe, ocorreu um erro interno.",
     });
   }
 }
