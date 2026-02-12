@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import chatRoutes from "./routes/chat.routes.js";
 import suggestionsRoutes from "./routes/suggestions.js";
+import pool from "./config/database.js";
+
 
 
 
@@ -15,7 +17,14 @@ app.use("/chat", chatRoutes);
 
 app.use("/suggestions", suggestionsRoutes);
 
+pool.query("SELECT NOW()")
+  .then(res => console.log("Banco conectado:", res.rows))
+  .catch(err => console.error("Erro ao conectar:", err));
+
+
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
+
+

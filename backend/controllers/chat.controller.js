@@ -1,6 +1,6 @@
 import { intents } from "../data/intents.js";
 import { normalizeText } from "../utils/textUtils.js";
-import { gerarResposta } from "../services/openai.service.js";
+import { gerarResposta } from "../services/localResponses.service.js";
 
 export async function chatController(req, res) {
   try {
