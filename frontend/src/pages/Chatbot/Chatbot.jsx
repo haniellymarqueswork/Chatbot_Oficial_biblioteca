@@ -5,7 +5,6 @@ import "./chatbot.css";
 export default function Chatbot() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
-
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
@@ -63,7 +62,6 @@ export default function Chatbot() {
               </div>
             ))}
 
-            {/* scroll automático */}
             <div ref={messagesEndRef} />
           </div>
 
