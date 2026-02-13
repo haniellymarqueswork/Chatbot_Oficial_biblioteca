@@ -20,7 +20,7 @@ export default function Chatbot() {
     setInput("");
 
     try {
-      const response = await fetch("http://localhost:3000/chat", {
+      const response = await fetch("https://chatbot-biblioteca-backend.onrender.com/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: messageText }),
@@ -37,7 +37,7 @@ export default function Chatbot() {
         ...prev,
         {
           sender: "bot",
-          text: "❌ Erro ao tentar conectar ao servidor.",
+          text: "Desculpe, erro ao tentar conectar ao servidor.",
         },
       ]);
     }

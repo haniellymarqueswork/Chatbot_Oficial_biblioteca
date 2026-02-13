@@ -5,7 +5,7 @@ export default function Suggestions({ onSelect }) {
   const [suggestions, setSuggestions] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/suggestions")
+    fetch("https://chatbot-biblioteca-backend.onrender.com/suggestions")
       .then(res => res.json())
       .then(data => setSuggestions(data))
       .catch(err => console.error(err));
