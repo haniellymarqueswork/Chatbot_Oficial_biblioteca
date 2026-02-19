@@ -2,6 +2,60 @@ import { useState, useEffect, useRef } from "react";
 import Suggestions from "../../components/suggestions/Suggestions";
 import "./chatbot.css";
 
+function renderBotText(text) {
+  if (!text) return null;
+
+  const lines = text
+    .replace(/\r\n/g, "\n")
+    .split("\n")
+    .map((l) => l.trim())
+    .filter(Boolean);
+
+  if (lines.length <= 1) return <p>{text}</p>;
+
+  const numbered = lines.filter((l) => /^\d+\.\s+/.test(l));
+  const nonNumbered = lines.filter((l) => !/^\d+\.\s+/.test(l));
+
+  const dashed = lines.filter((l) => /^-\s+/.test(l));
+  const nonDashed = lines.filter((l) => !/^-\s+/.test(l));
+
+  if (numbered.length >= 2) {
+    const intro = nonNumbered.join(" ");
+    return (
+      <>
+        {intro && <p>{intro}</p>}
+        <ol>
+          {numbered.map((item, i) => (
+            <li key={i}>{item.replace(/^\d+\.\s+/, "")}</li>
+          ))}
+        </ol>
+      </>
+    );
+  }
+
+  if (dashed.length >= 2) {
+    const intro = nonDashed.join(" ");
+    return (
+      <>
+        {intro && <p>{intro}</p>}
+        <ul>
+          {dashed.map((item, i) => (
+            <li key={i}>{item.replace(/^-+\s+/, "")}</li>
+          ))}
+        </ul>
+      </>
+    );
+  }
+
+  return (
+    <>
+      {lines.map((line, i) => (
+        <p key={i}>{line}</p>
+      ))}
+    </>
+  );
+}
+
 export default function Chatbot() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
@@ -20,18 +74,18 @@ export default function Chatbot() {
     setInput("");
 
     try {
-      const response = await fetch("https://chatbot-biblioteca-backend.onrender.com/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: messageText }),
-      });
+      const response = await fetch(
+        "https://chatbot-biblioteca-backend.onrender.com/chat",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: messageText }),
+        }
+      );
 
       const data = await response.json();
 
-      setMessages((prev) => [
-        ...prev,
-        { sender: "bot", text: data.reply },
-      ]);
+      setMessages((prev) => [...prev, { sender: "bot", text: data.reply }]);
     } catch {
       setMessages((prev) => [
         ...prev,
@@ -54,11 +108,7 @@ export default function Chatbot() {
           <div className="chat-box">
             {messages.map((msg, index) => (
               <div key={index} className={`message ${msg.sender}`}>
-                {msg.sender === "bot" ? (
-                  <div dangerouslySetInnerHTML={{ __html: msg.text }} />
-                ) : (
-                  msg.text
-                )}
+                {msg.sender === "bot" ? renderBotText(msg.text) : msg.text}
               </div>
             ))}
 

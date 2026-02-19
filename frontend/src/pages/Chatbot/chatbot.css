@@ -180,3 +180,27 @@
     max-width: 78%;
   }
 }
+
+.message p {
+  margin: 0 0 8px 0;
+  line-height: 1.35;
+}
+
+.message p:last-child {
+  margin-bottom: 0;
+}
+
+.message ul,
+.message ol {
+  margin: 6px 0 0 18px;
+  padding-left: 12px;
+}
+
+.message li {
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+
+.message li:last-child {
+  margin-bottom: 0;
+}
