@@ -1,16 +1,99 @@
-# React + Vite
+Desenvolvido por Hnielly Marques 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# IndexIA
 
-Currently, two official plugins are available:
+IndexIA é um assistente digital desenvolvido para otimizar o acesso às informações institucionais da Biblioteca Padre Joaquim Colaço Dourado.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+O sistema fornece respostas rápidas, organizadas e estruturadas sobre regras, empréstimos, prazos e normas internas, através de uma interface moderna, responsiva e escalável.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Acesse a aplicação
 
-## Expanding the ESLint configuration
+🔗 https://indexia.onrender.com
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🎯 Proposta de Valor
+
+A IndexIA foi criada para:
+
+- Reduzir dúvidas recorrentes
+- Agilizar o atendimento institucional
+- Facilitar o acesso à informação
+- Melhorar a experiência do usuário
+
+O sistema centraliza regras e orientações em uma interface simples e acessível.
+
+---
+
+## 🧠 Como Funciona
+
+A aplicação opera com base em:
+
+- Associação de perguntas a categorias (intents)
+- Banco de dados relacional estruturado
+- API REST para comunicação frontend ↔ backend
+- Renderização dinâmica de respostas
+- Conversão automática de listas numeradas em formato estruturado
+
+---
+
+## 🏗️ Arquitetura
+
+### 🔹 Frontend
+- React
+- Vite
+- CSS Responsivo
+
+### 🔹 Backend
+- Node.js
+- Express
+- API REST
+
+### 🔹 Banco de Dados
+- Supabase (PostgreSQL)
+- Estrutura relacional:
+  - `intents`
+  - `perguntas`
+
+---
+
+## 📱 Experiência do Usuário
+
+- Interface limpa e institucional
+- Responsividade para desktop, tablet e mobile
+- Menu lateral com perguntas sugeridas
+- Tratamento de carregamento (cold start)
+- Organização automática de respostas em listas
+
+---
+
+## 🔄 Escalabilidade e Evolução
+
+A IndexIA foi desenvolvida com foco em extensibilidade, permitindo futuras integrações como:
+
+- Inteligência Artificial
+- Painel administrativo
+- Autenticação de usuários
+- Métricas de uso
+- Expansão para múltiplas bibliotecas
+
+---
+
+## 🛠️ Execução Local
+
+### Pré-requisitos
+- Node.js instalado
+
+### Backend
+
+```bash
+cd backend
+npm install
+npm run dev
+
+# Frontend 
+cd frontend
+npm install
+npm run dev
