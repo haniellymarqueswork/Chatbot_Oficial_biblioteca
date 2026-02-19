@@ -98,3 +98,14 @@
     left: 120%;
   }
 }
+
+@media (max-width: 768px) {
+  .suggestions {
+    width: 100%;
+  }
+
+  .suggestion-btn {
+    white-space: normal;
+  }
+}
+
