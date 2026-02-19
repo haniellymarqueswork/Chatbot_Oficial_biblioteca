@@ -7,7 +7,7 @@ import pool from "./config/database.js";
 const app = express();
 
 app.use(cors({
-  origin: "https://chatbot-biblioteca-frontend.onrender.com",
+  origin: "https://indexia.onrender.com",
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type"],
 }));
