@@ -1,5 +1,5 @@
 import pool from "../config/database.js";
-import { normalizeText } from "../utils/textUtils.js";
+import { gerarRespostaComIA } from "../services/llmService.js";
 
 export async function chatController(req, res) {
   try {
@@ -11,27 +11,20 @@ export async function chatController(req, res) {
       });
     }
 
-    const text = message.trim();
-
-  const result = await pool.query(
-  `
-  SELECT i.resposta
-  FROM public.perguntas p
-  JOIN public.intents i ON i.id = p.intent_id
-  WHERE
-    unaccent(lower($1)) LIKE '%' || unaccent(lower(p.pergunta)) || '%'
-    OR
-    unaccent(lower(p.pergunta)) LIKE '%' || unaccent(lower($1)) || '%'
-    ORDER BY length(p.pergunta) DESC
-
-   LIMIT 1;
-  `,
-  [message]
-);
-
-
-
-
+    const result = await pool.query(
+      `
+      SELECT i.resposta
+      FROM public.perguntas p
+      JOIN public.intents i ON i.id = p.intent_id
+      WHERE
+        unaccent(lower($1)) LIKE '%' || unaccent(lower(p.pergunta)) || '%'
+        OR
+        unaccent(lower(p.pergunta)) LIKE '%' || unaccent(lower($1)) || '%'
+      ORDER BY length(p.pergunta) DESC
+      LIMIT 1;
+      `,
+      [message]
+    );
 
     if (result.rows.length === 0) {
       return res.json({
@@ -40,10 +33,13 @@ export async function chatController(req, res) {
       });
     }
 
-    return res.json({
-      reply: result.rows[0].resposta,
-    });
+    const respostaOficial = result.rows[0].resposta;
 
+    const reply = await gerarRespostaComIA(message, respostaOficial);
+
+    return res.json({
+      reply,
+    });
   } catch (error) {
     console.error("Erro no chatController:", error);
     return res.status(500).json({
