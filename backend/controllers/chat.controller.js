@@ -1,5 +1,5 @@
 import pool from "../config/database.js";
-import { gerarRespostaComIA } from "../services/llmService.js";
+import { gerarRespostaComGroq } from "../services/groqService.js";
 
 export async function chatController(req, res) {
   try {
@@ -35,10 +35,10 @@ export async function chatController(req, res) {
 
     const respostaOficial = result.rows[0].resposta;
 
-    const reply = await gerarRespostaComIA(message, respostaOficial);
+    const respostaIA = await gerarRespostaComGroq(message, respostaOficial);
 
     return res.json({
-      reply,
+      reply: respostaIA,
     });
   } catch (error) {
     console.error("Erro no chatController:", error);
