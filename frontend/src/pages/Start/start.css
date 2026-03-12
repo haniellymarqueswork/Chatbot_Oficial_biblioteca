@@ -1,7 +1,7 @@
 .start-container {
   background: linear-gradient(
     135deg,
-   #940505
+   #f7f7f7
   );
   width: 100vw;
   height: 100vh;
@@ -20,7 +20,7 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: clamp(48px, 8vw, 80px);
   font-weight: bold;
-  color: #f7f7f7;
+  color: #e90303;
   margin: 0;
 
 
@@ -37,7 +37,7 @@
   margin-left: 4px;
   animation: iaSlideIn 1.2s ease-out forwards;
   animation-delay: 0.8s;
-  color:#f7f7f7;
+  color:#e90303;
 }
 
 

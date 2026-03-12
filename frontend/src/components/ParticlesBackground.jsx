@@ -30,11 +30,11 @@ export default function ParticlesBackground() {
             },
           },
           color: {
-            value: "rgb(255, 255, 255)",
+            value: "rgb(247, 0, 0)",
           },
           links: {
             enable: true,
-            color: "rgb(255, 255, 255)",
+            color: "rgb(231, 2, 2)",
             opacity: 0.4,
             distance: 110,
           },

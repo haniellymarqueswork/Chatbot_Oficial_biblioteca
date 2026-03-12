@@ -6,8 +6,8 @@ import { createStyles } from 'antd-style';
 const useStyle = createStyles(({ prefixCls, css }) => ({
   customButton: css`
     &.${prefixCls}-btn-primary {
-      background-color: #ffffff !important;
-      color: #7a0000 !important;
+      background-color: #f70404 !important;
+      color: #f8f8f8 !important;
       border: none !important;
       transition: all 0.3s ease;
     }
