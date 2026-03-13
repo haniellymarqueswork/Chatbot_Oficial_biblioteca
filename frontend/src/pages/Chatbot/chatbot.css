@@ -2,7 +2,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #940505;
+  background-color: #a50404;
   font-family: "Inter", Arial, sans-serif;
    overflow: hidden;
 }
@@ -56,15 +56,15 @@
 
 .chat-box .message.user {
   align-self: flex-end;
-  background: #0b77f3;
-  color: rgb(10, 10, 10);
+  background: #3e96fa;
+  color: rgb(255, 255, 255);
   border-bottom-right-radius: 6px;
 }
 
 .chat-box .message.bot {
   align-self: flex-start;
-  background: #9b9b9b;
-  color: #000000;
+  background: #949494;
+  color: #ffffff;
   border-bottom-left-radius: 6px;
 }
 
