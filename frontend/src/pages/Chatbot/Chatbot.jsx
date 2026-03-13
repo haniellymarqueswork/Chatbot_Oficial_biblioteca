@@ -5,7 +5,30 @@ import "./chatbot.css";
 function renderBotText(text) {
   if (!text) return null;
 
-  return <p style={{ whiteSpace: "pre-line" }}>{text}</p>;
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  const parts = text.split(urlRegex);
+
+  return (
+    <div style={{ whiteSpace: "pre-line" }}>
+      {parts.map((part, index) => {
+        const isLink = /^https?:\/\/[^\s]+$/.test(part);
+
+        return isLink ? (
+          <a
+            key={index}
+            href={part}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "#004cff", fontWeight: "bold" }}
+          >
+            {part}
+          </a>
+        ) : (
+          <span key={index}>{part}</span>
+        );
+      })}
+    </div>
+  );
 }
 
 export default function Chatbot() {

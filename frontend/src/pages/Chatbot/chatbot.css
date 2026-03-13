@@ -68,6 +68,13 @@
   border-bottom-left-radius: 6px;
 }
 
+.message a {
+  color: #004cff;
+  font-weight: bold;
+  text-decoration: underline;
+  word-break: break-all;
+}
+
 .input-area {
   display: flex;
   gap: 10px;
