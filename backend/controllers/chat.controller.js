@@ -16,7 +16,6 @@ export async function chatController(req, res) {
 
     console.log("Mensagem recebida:", texto);
 
-    // 1) Primeiro trata mensagens conversacionais curtas com IA
     if (texto.length <= 15) {
       const intentCurta = await classificarIntentComGroq(texto);
       console.log("Intent curta classificada:", intentCurta);
@@ -49,7 +48,6 @@ export async function chatController(req, res) {
       }
     }
 
-    // 2) Busca no banco
     let result = await pool.query(
       `
       SELECT i.resposta, i.nome
@@ -69,14 +67,12 @@ export async function chatController(req, res) {
 
     if (result.rows.length > 0) {
       const respostaOficial = result.rows[0].resposta;
-      const respostaIA = await gerarRespostaComGroq(texto, respostaOficial);
 
       return res.json({
-        reply: respostaIA,
+        reply: respostaOficial,
       });
     }
 
-    // 3) Classificação por intent para dúvidas da biblioteca
     console.log("Entrou na classificação por intent");
 
     const intent = await classificarIntentComGroq(texto);
@@ -97,10 +93,9 @@ export async function chatController(req, res) {
 
       if (result.rows.length > 0) {
         const respostaOficial = result.rows[0].resposta;
-        const respostaIA = await gerarRespostaComGroq(texto, respostaOficial);
 
         return res.json({
-          reply: respostaIA,
+          reply: respostaOficial,
         });
       }
     }
