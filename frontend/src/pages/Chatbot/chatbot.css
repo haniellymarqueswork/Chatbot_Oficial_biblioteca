@@ -63,7 +63,7 @@
 
 .chat-box .message.bot {
   align-self: flex-start;
-  background: #949494;
+  background: #4d4c4c;
   color: #ffffff;
   border-bottom-left-radius: 6px;
 }
