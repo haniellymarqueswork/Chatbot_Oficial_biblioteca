@@ -34,7 +34,7 @@ Regras:
 - Se não se encaixar, responda: desconhecida
 
 Mensagem do usuário: "${message}"
-    `;
+`;
 
     const response = await groq.chat.completions.create({
       model: "llama-3.3-70b-versatile",
@@ -45,16 +45,17 @@ Mensagem do usuário: "${message}"
         },
       ],
       temperature: 0,
-      max_tokens: 5
+      max_tokens: 5,
     });
 
     const intent = response.choices[0].message.content
       .trim()
       .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
       .replace(/[^a-z]/g, "");
 
     return intent;
-
   } catch (error) {
     console.error("Erro ao classificar intent com Groq:", error);
     return "desconhecida";

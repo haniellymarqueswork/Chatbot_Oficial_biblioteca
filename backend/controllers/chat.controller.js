@@ -1,5 +1,9 @@
 import pool from "../config/database.js";
-import { gerarRespostaComGroq } from "../services/groqService.js";
+import {
+  humanizarRespostaBiblioteca,
+  responderMensagemCurta,
+  responderPerguntaLiteraria,
+} from "../services/groqService.js";
 import { classificarIntentComGroq } from "../services/classificarIntentGroq.js";
 
 export async function chatController(req, res) {
@@ -20,30 +24,12 @@ export async function chatController(req, res) {
       const intentCurta = await classificarIntentComGroq(texto);
       console.log("Intent curta classificada:", intentCurta);
 
-      if (intentCurta === "saudacao") {
-        const resposta = await gerarRespostaComGroq(
-          texto,
-          "Responda de forma simpática e breve como assistente virtual da biblioteca, dando boas-vindas e dizendo que pode ajudar com horário, empréstimos, renovação, devolução e multas."
-        );
-
-        return res.json({ reply: resposta });
-      }
-
-      if (intentCurta === "agradecimento") {
-        const resposta = await gerarRespostaComGroq(
-          texto,
-          "Responda de forma simpática e breve ao agradecimento do usuário, como assistente virtual da biblioteca."
-        );
-
-        return res.json({ reply: resposta });
-      }
-
-      if (intentCurta === "despedida") {
-        const resposta = await gerarRespostaComGroq(
-          texto,
-          "Responda de forma simpática e breve à despedida do usuário, como assistente virtual da biblioteca."
-        );
-
+      if (
+        intentCurta === "saudacao" ||
+        intentCurta === "agradecimento" ||
+        intentCurta === "despedida"
+      ) {
+        const resposta = await responderMensagemCurta(texto, intentCurta);
         return res.json({ reply: resposta });
       }
     }
@@ -67,9 +53,13 @@ export async function chatController(req, res) {
 
     if (result.rows.length > 0) {
       const respostaOficial = result.rows[0].resposta;
+      const respostaHumanizada = await humanizarRespostaBiblioteca(
+        texto,
+        respostaOficial
+      );
 
       return res.json({
-        reply: respostaOficial,
+        reply: respostaHumanizada,
       });
     }
 
@@ -93,16 +83,21 @@ export async function chatController(req, res) {
 
       if (result.rows.length > 0) {
         const respostaOficial = result.rows[0].resposta;
+        const respostaHumanizada = await humanizarRespostaBiblioteca(
+          texto,
+          respostaOficial
+        );
 
         return res.json({
-          reply: respostaOficial,
+          reply: respostaHumanizada,
         });
       }
     }
 
+    const respostaLiteraria = await responderPerguntaLiteraria(texto);
+
     return res.json({
-      reply:
-        "Não encontrei essa informação. Você pode perguntar sobre horário, empréstimo, multa, devolução ou renovação.",
+      reply: respostaLiteraria,
     });
   } catch (error) {
     console.error("Erro no chatController:", error);
