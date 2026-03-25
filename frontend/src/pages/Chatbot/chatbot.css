@@ -4,17 +4,17 @@
   flex-direction: column;
   background-color: #a50404;
   font-family: "Inter", Arial, sans-serif;
-   overflow: hidden;
+  overflow: hidden;
+  position: relative;
 }
 
 .chat-title {
-  text-align:center;
+  text-align: center;
   padding: 14px 0;
   color: #fcfcfc;
   font-size: 30px;
   font-weight: bold;
   flex-shrink: 0;
-  
 }
 
 .chat-layout {
@@ -25,14 +25,19 @@
   overflow: hidden;
 }
 
+.suggestions-desktop {
+  display: block;
+}
+
 .chat-main {
   flex: 1;
   display: flex;
   flex-direction: column;
   background: #ffffff;
   border-radius: 14px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   overflow: hidden;
+  position: relative;
 }
 
 .chat-box {
@@ -42,6 +47,15 @@
   background: #ffffff;
   display: flex;
   flex-direction: column;
+}
+
+.chat-welcome {
+  margin: auto;
+  text-align: center;
+  color: #a10a0a;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 24px;
 }
 
 .chat-box .message {
@@ -70,7 +84,7 @@
 
 .message a {
   color: #9ce1f7;
-  font-weight:bold ;
+  font-weight: bold;
   text-decoration: underline;
   word-break: break-all;
 }
@@ -88,7 +102,6 @@
   padding: 14px 18px;
   border-radius: 25px;
   font-size: 14px;
-
   border: 2px solid #a00000;
   outline: none;
 }
@@ -97,7 +110,6 @@
   border-color: #b00000;
   box-shadow: 0 0 0 2px rgba(73, 0, 0, 0.35);
 }
-
 
 .send-button {
   padding: 0 24px;
@@ -119,6 +131,78 @@
   transform: scale(0.96);
 }
 
+.mobile-menu-button {
+  display: none;
+}
+
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 40;
+}
+
+.mobile-suggestions-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 84%;
+  max-width: 320px;
+  height: 100vh;
+  background: #ffffff;
+  z-index: 50;
+  box-shadow: -8px 0 25px rgba(0, 0, 0, 0.2);
+  padding: 18px 14px;
+  overflow-y: auto;
+  animation: slideInRight 0.25s ease;
+}
+
+.mobile-suggestions-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.mobile-suggestions-header h3 {
+  margin: 0;
+  color: #a50404;
+  font-size: 18px;
+}
+
+.close-menu-button {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #a50404;
+  line-height: 1;
+}
+
+.message p {
+  margin: 0 0 8px 0;
+  line-height: 1.35;
+}
+
+.message p:last-child {
+  margin-bottom: 0;
+}
+
+.message ul,
+.message ol {
+  margin: 6px 0 0 18px;
+  padding-left: 12px;
+}
+
+.message li {
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+
+.message li:last-child {
+  margin-bottom: 0;
+}
+
 @keyframes messageIn {
   from {
     opacity: 0;
@@ -130,32 +214,74 @@
   }
 }
 
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 
 @media (max-width: 768px) {
+  .chat-container {
+    height: 100vh;
+  }
+
   .chat-title {
     font-size: 22px;
     padding: 10px 0;
   }
 
   .chat-layout {
-    flex-direction: column;     
     padding: 12px;
     gap: 12px;
-    overflow-y: auto;            
+  }
+
+  .suggestions-desktop {
+    display: none;
   }
 
   .chat-main {
+    min-height: 0;
+    height: 100%;
     border-radius: 14px;
-    min-height: 60vh;            
+  }
+
+  .mobile-menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    background: #b90707;
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 5;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
   }
 
   .chat-box {
-    padding: 14px;
+    padding: 58px 14px 14px;
   }
 
   .chat-box .message {
-    max-width: 92%;             
+    max-width: 92%;
     font-size: 14px;
+  }
+
+  .chat-welcome {
+    font-size: 15px;
+    padding: 18px;
   }
 
   .input-area {
@@ -186,28 +312,4 @@
   .chat-box .message {
     max-width: 78%;
   }
-}
-
-.message p {
-  margin: 0 0 8px 0;
-  line-height: 1.35;
-}
-
-.message p:last-child {
-  margin-bottom: 0;
-}
-
-.message ul,
-.message ol {
-  margin: 6px 0 0 18px;
-  padding-left: 12px;
-}
-
-.message li {
-  margin-bottom: 6px;
-  line-height: 1.35;
-}
-
-.message li:last-child {
-  margin-bottom: 0;
 }

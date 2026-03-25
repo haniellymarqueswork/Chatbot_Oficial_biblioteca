@@ -34,6 +34,7 @@ function renderBotText(text) {
 export default function Chatbot() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
@@ -47,6 +48,7 @@ export default function Chatbot() {
 
     setMessages((prev) => [...prev, { sender: "user", text: messageText }]);
     setInput("");
+    setMenuOpen(false);
 
     try {
       const response = await fetch(
@@ -77,10 +79,27 @@ export default function Chatbot() {
       <h2 className="chat-title">INDEXIA</h2>
 
       <div className="chat-layout">
-        <Suggestions onSelect={(question) => sendMessage(question)} />
+        <div className="suggestions-desktop">
+          <Suggestions onSelect={(question) => sendMessage(question)} />
+        </div>
 
         <div className="chat-main">
+          <button
+            className="mobile-menu-button"
+            onClick={() => setMenuOpen(true)}
+            aria-label="Abrir sugestões"
+          >
+            ?
+          </button>
+
           <div className="chat-box">
+            {messages.length === 0 && (
+              <div className="chat-welcome">
+                Olá, eu sou o IndexIA ! <br />
+                Como posso te ajudar hoje?
+              </div>
+            )}
+
             {messages.map((msg, index) => (
               <div key={index} className={`message ${msg.sender}`}>
                 {msg.sender === "bot" ? renderBotText(msg.text) : msg.text}
@@ -105,6 +124,27 @@ export default function Chatbot() {
           </div>
         </div>
       </div>
+
+      {menuOpen && (
+        <>
+          <div className="mobile-overlay" onClick={() => setMenuOpen(false)} />
+
+          <div className="mobile-suggestions-panel">
+            <div className="mobile-suggestions-header">
+              <h3>Pergunte-nos</h3>
+              <button
+                className="close-menu-button"
+                onClick={() => setMenuOpen(false)}
+                aria-label="Fechar sugestões"
+              >
+                ✕
+              </button>
+            </div>
+
+            <Suggestions onSelect={(question) => sendMessage(question)} />
+          </div>
+        </>
+      )}
     </div>
   );
 }
